@@ -29,16 +29,10 @@ struct CameraPreviewControllerWrapper: UIViewControllerRepresentable {
 class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate {
     
     var previewView = UIImageView(frame: UIScreen.main.bounds)
-    
     var captureSession = AVCaptureSession()
-    
     var yoloRequest: VNRequest?
-    
-    var classes:[String] = []
     let color = UIColor(red: 0.30, green: 0.96, blue: 0.08, alpha: 1.0)
     let ciContext = CIContext()
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,11 +49,10 @@ class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
         do {
             
             let model = try yolov8s().model
-            classes = model.modelDescription.classLabels as! [String]
             let vnModel = try VNCoreMLModel(for: model)
             yoloRequest = VNCoreMLRequest(model: vnModel)
             
-        } catch let error {
+        } catch _ {
             fatalError("mlmodel error.")
         }
     }
@@ -85,7 +78,7 @@ class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
     
     
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        let drawImage = detection(sampleBuffer: sampleBuffer)
+        let drawImage = detectObjects(sampleBuffer: sampleBuffer)
         
         DispatchQueue.main.async {
             self.previewView.image = drawImage
@@ -122,7 +115,7 @@ class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
             
             let textFontAttributes = [
                 NSAttributedString.Key.font: UIFont.systemFont(ofSize: textRect.width * 0.1, weight: .bold),
-                NSAttributedString.Key.foregroundColor: detection.color,
+                NSAttributedString.Key.foregroundColor: color,
                 NSAttributedString.Key.paragraphStyle: textStyle
             ]
             
@@ -137,7 +130,7 @@ class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
             cgContext.textMatrix = CGAffineTransform.identity
             CTFrameDraw(frame, cgContext)
             
-            cgContext.setStrokeColor(detection.color.cgColor)
+            cgContext.setStrokeColor(color.cgColor)
             cgContext.setLineWidth(9)
             cgContext.stroke(invertedBox)
             
@@ -148,7 +141,7 @@ class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
         return UIImage(ciImage: CIImage(cgImage: newImage))
     }
     
-    func detection(sampleBuffer: CMSampleBuffer) -> UIImage? {
+    func detectObjects(sampleBuffer: CMSampleBuffer) -> UIImage? {
         do {
             let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
             let handler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer)
@@ -158,19 +151,24 @@ class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
             
             var detections:[Detection] = []
             for result in results {
-                let flippedBox = CGRect(x: result.boundingBox.minX, y: 1 - result.boundingBox.maxY, width: result.boundingBox.width, height: result.boundingBox.height)
-                let box = VNImageRectForNormalizedRect(flippedBox, Int(sampleBuffer.formatDescription!.dimensions.width), Int(sampleBuffer.formatDescription!.dimensions.height))
                 
-                let label = result.labels.first?.identifier
-                let detection = Detection(box: box, confidence: result.confidence, label: label, color: color)
+                let boundingBox = result.boundingBox
+                let rotatedBox = CGRect(x: boundingBox.minX, y: 1 - boundingBox.maxY, width: boundingBox.width, height: boundingBox.height)
+                
+                let dimensions = sampleBuffer.formatDescription!.dimensions
+                let box = VNImageRectForNormalizedRect(rotatedBox, Int(dimensions.width), Int(dimensions.height))
+                
+                let detection = Detection(box: box, confidence: result.confidence)
                 detections.append(detection)
             }
+            
             let drawImage = drawRectsOnImage(detections, pixelBuffer)
             
             return drawImage
         } catch let error {
-            return nil
             print(error)
+            
+            return nil
         }
     }
     
@@ -179,6 +177,4 @@ class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
 struct Detection {
     let box:CGRect
     let confidence:Float
-    let label:String?
-    let color:UIColor
 }
