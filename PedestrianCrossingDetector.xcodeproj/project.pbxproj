@@ -12,6 +12,14 @@
 		433B5B032BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B5B022BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift */; };
 		433B5B052BAB45F5006EA00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433B5B042BAB45F5006EA00A /* Assets.xcassets */; };
 		433B5B082BAB45F5006EA00A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433B5B072BAB45F5006EA00A /* Preview Assets.xcassets */; };
+		43EE97872BCAB82200344698 /* SetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE97862BCAB82200344698 /* SetupModel.swift */; };
+		43EE97892BCAB8C000344698 /* CameraPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE97882BCAB8C000344698 /* CameraPreview.swift */; };
+		43EE978B2BCAB9D500344698 /* SetupVideoCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE978A2BCAB9D500344698 /* SetupVideoCapture.swift */; };
+		43EE978D2BCABA2600344698 /* CaptureOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE978C2BCABA2600344698 /* CaptureOutput.swift */; };
+		43EE978F2BCABA7700344698 /* DetectObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE978E2BCABA7700344698 /* DetectObjects.swift */; };
+		43EE97912BCABAD100344698 /* DrawBoxes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE97902BCABAD100344698 /* DrawBoxes.swift */; };
+		43EE97932BCABB1600344698 /* Detection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE97922BCABB1600344698 /* Detection.swift */; };
+		43EE97952BCABB5300344698 /* DrawBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43EE97942BCABB5300344698 /* DrawBox.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +29,14 @@
 		433B5B022BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewAndDetectionsView.swift; sourceTree = "<group>"; };
 		433B5B042BAB45F5006EA00A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		433B5B072BAB45F5006EA00A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		43EE97862BCAB82200344698 /* SetupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupModel.swift; sourceTree = "<group>"; };
+		43EE97882BCAB8C000344698 /* CameraPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreview.swift; sourceTree = "<group>"; };
+		43EE978A2BCAB9D500344698 /* SetupVideoCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupVideoCapture.swift; sourceTree = "<group>"; };
+		43EE978C2BCABA2600344698 /* CaptureOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaptureOutput.swift; sourceTree = "<group>"; };
+		43EE978E2BCABA7700344698 /* DetectObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectObjects.swift; sourceTree = "<group>"; };
+		43EE97902BCABAD100344698 /* DrawBoxes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawBoxes.swift; sourceTree = "<group>"; };
+		43EE97922BCABB1600344698 /* Detection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Detection.swift; sourceTree = "<group>"; };
+		43EE97942BCABB5300344698 /* DrawBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawBox.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +69,17 @@
 		433B5AFF2BAB45F3006EA00A /* PedestrianCrossingDetector */ = {
 			isa = PBXGroup;
 			children = (
-				432BA6412BBF3EB700C698C3 /* yolov8s.mlpackage */,
 				433B5B002BAB45F3006EA00A /* PedestrianCrossingDetectorApp.swift */,
 				433B5B022BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift */,
+				43EE97882BCAB8C000344698 /* CameraPreview.swift */,
+				43EE97862BCAB82200344698 /* SetupModel.swift */,
+				43EE978A2BCAB9D500344698 /* SetupVideoCapture.swift */,
+				43EE978C2BCABA2600344698 /* CaptureOutput.swift */,
+				43EE978E2BCABA7700344698 /* DetectObjects.swift */,
+				43EE97902BCABAD100344698 /* DrawBoxes.swift */,
+				43EE97942BCABB5300344698 /* DrawBox.swift */,
+				43EE97922BCABB1600344698 /* Detection.swift */,
+				432BA6412BBF3EB700C698C3 /* yolov8s.mlpackage */,
 				433B5B042BAB45F5006EA00A /* Assets.xcassets */,
 				433B5B062BAB45F5006EA00A /* Preview Content */,
 			);
@@ -140,9 +164,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				43EE97892BCAB8C000344698 /* CameraPreview.swift in Sources */,
+				43EE97932BCABB1600344698 /* Detection.swift in Sources */,
+				43EE978F2BCABA7700344698 /* DetectObjects.swift in Sources */,
+				43EE978D2BCABA2600344698 /* CaptureOutput.swift in Sources */,
 				432BA6422BBF3EB700C698C3 /* yolov8s.mlpackage in Sources */,
+				43EE97872BCAB82200344698 /* SetupModel.swift in Sources */,
 				433B5B032BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift in Sources */,
+				43EE97912BCABAD100344698 /* DrawBoxes.swift in Sources */,
+				43EE978B2BCAB9D500344698 /* SetupVideoCapture.swift in Sources */,
 				433B5B012BAB45F3006EA00A /* PedestrianCrossingDetectorApp.swift in Sources */,
+				43EE97952BCABB5300344698 /* DrawBox.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
