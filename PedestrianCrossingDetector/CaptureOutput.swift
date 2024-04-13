@@ -9,10 +9,14 @@ import AVFoundation
 
 extension CameraPreview {
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
-        let drawImage = detectObjects(sampleBuffer: sampleBuffer)
+        let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer)!
+        
+        let detections = detectObjects(pixelBuffer: pixelBuffer)!
+        
+        let drawnImage = drawBoxes(detections, sampleBuffer, pixelBuffer)
         
         DispatchQueue.main.async {
-            self.previewView.image = drawImage
+            self.previewView.image = drawnImage
         }
     }
 }

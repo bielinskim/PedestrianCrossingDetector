@@ -15,6 +15,7 @@ class CameraPreview: UIViewController, AVCaptureVideoDataOutputSampleBufferDeleg
     var captureSession = AVCaptureSession()
     var yoloRequest: VNRequest?
     let color = UIColor(red: 0.30, green: 0.96, blue: 0.08, alpha: 1.0)
+    let textColor = UIColor(red: 0.5, green: 0.0, blue: 0.0, alpha: 1.0)
     let ciContext = CIContext()
     
     override func viewDidLoad() {

@@ -10,7 +10,7 @@ import AVFoundation
 import Vision
 
 extension CameraPreview {
-    func drawBoxes(_ detections: [Detection], _ pixelBuffer: CVPixelBuffer) -> UIImage? {
+    func drawBoxes(_ detections: [VNRecognizedObjectObservation], _ sampleBuffer: CMSampleBuffer, _ pixelBuffer: CVPixelBuffer) -> UIImage? {
         let ciImage = CIImage(cvPixelBuffer: pixelBuffer)
         let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent)!
         let size = ciImage.extent.size
@@ -28,8 +28,12 @@ extension CameraPreview {
         cgContext.draw(cgImage, in: CGRect(origin: .zero, size: size))
         
         for detection in detections {
-            drawBox(detection, cgContext, size)
+            let boundingBox = detection.boundingBox
+            let dimensions = sampleBuffer.formatDescription!.dimensions
+            let box = VNImageRectForNormalizedRect(boundingBox, Int(dimensions.width), Int(dimensions.height))
             
+            drawBox(detection, cgContext, box)
+            drawConfidence(detection, cgContext, box, size)
         }
         
         let newImage = cgContext.makeImage()!
