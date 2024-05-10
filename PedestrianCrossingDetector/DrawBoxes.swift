@@ -32,8 +32,10 @@ extension CameraPreview {
             let dimensions = sampleBuffer.formatDescription!.dimensions
             let box = VNImageRectForNormalizedRect(boundingBox, Int(dimensions.width), Int(dimensions.height))
             
-            drawBox(detection, cgContext, box)
-            drawConfidence(detection, cgContext, box, size)
+            if (detection.confidence >= 0.8) {
+                drawBox(detection, cgContext, box)
+                drawConfidence(detection, cgContext, box, size)
+            }
         }
         
         let newImage = cgContext.makeImage()!

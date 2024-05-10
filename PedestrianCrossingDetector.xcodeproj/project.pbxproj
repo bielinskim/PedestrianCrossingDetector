@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		430F47D82BEE880400B3CB97 /* yolov8s.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 430F47D72BEE880300B3CB97 /* yolov8s.mlpackage */; };
 		4318B5A92BCAE35B005C9983 /* DrawConfidence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4318B5A82BCAE35B005C9983 /* DrawConfidence.swift */; };
-		432BA6422BBF3EB700C698C3 /* yolov8s.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = 432BA6412BBF3EB700C698C3 /* yolov8s.mlpackage */; };
 		433B5B012BAB45F3006EA00A /* PedestrianCrossingDetectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B5B002BAB45F3006EA00A /* PedestrianCrossingDetectorApp.swift */; };
 		433B5B032BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 433B5B022BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift */; };
 		433B5B052BAB45F5006EA00A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 433B5B042BAB45F5006EA00A /* Assets.xcassets */; };
@@ -23,8 +23,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		430F47D72BEE880300B3CB97 /* yolov8s.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8s.mlpackage; sourceTree = "<group>"; };
 		4318B5A82BCAE35B005C9983 /* DrawConfidence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawConfidence.swift; sourceTree = "<group>"; };
-		432BA6412BBF3EB700C698C3 /* yolov8s.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8s.mlpackage; sourceTree = "<group>"; };
 		433B5AFD2BAB45F3006EA00A /* PedestrianCrossingDetector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PedestrianCrossingDetector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		433B5B002BAB45F3006EA00A /* PedestrianCrossingDetectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedestrianCrossingDetectorApp.swift; sourceTree = "<group>"; };
 		433B5B022BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraPreviewAndDetectionsView.swift; sourceTree = "<group>"; };
@@ -79,7 +79,7 @@
 				4318B5A82BCAE35B005C9983 /* DrawConfidence.swift */,
 				43EE97902BCABAD100344698 /* DrawBoxes.swift */,
 				43EE97942BCABB5300344698 /* DrawBox.swift */,
-				432BA6412BBF3EB700C698C3 /* yolov8s.mlpackage */,
+				430F47D72BEE880300B3CB97 /* yolov8s.mlpackage */,
 				433B5B042BAB45F5006EA00A /* Assets.xcassets */,
 				433B5B062BAB45F5006EA00A /* Preview Content */,
 			);
@@ -167,9 +167,9 @@
 				43EE97892BCAB8C000344698 /* CameraPreview.swift in Sources */,
 				43EE978F2BCABA7700344698 /* DetectObjects.swift in Sources */,
 				43EE978D2BCABA2600344698 /* CaptureOutput.swift in Sources */,
-				432BA6422BBF3EB700C698C3 /* yolov8s.mlpackage in Sources */,
 				43EE97872BCAB82200344698 /* SetupModel.swift in Sources */,
 				433B5B032BAB45F3006EA00A /* CameraPreviewAndDetectionsView.swift in Sources */,
+				430F47D82BEE880400B3CB97 /* yolov8s.mlpackage in Sources */,
 				4318B5A92BCAE35B005C9983 /* DrawConfidence.swift in Sources */,
 				43EE97912BCABAD100344698 /* DrawBoxes.swift in Sources */,
 				43EE978B2BCAB9D500344698 /* SetupVideoCapture.swift in Sources */,
